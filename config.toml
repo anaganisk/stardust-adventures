@@ -1,0 +1,50 @@
+baseurl         = "/"
+theme           = "hugo-casper-two"
+languageCode    = "en-US"
+disqusShortname = ""
+paginate        = 6
+#SectionPagesMenu = "main"
+
+[params]
+  title       = "Stardust Adventures"
+  subtitle    = "Exploring the unseen and unheard, in and around Vizag! Trekking | Camping | Stargazing"
+
+  cover       = ""
+  description = "Here is a description of your site."
+  metaDescription = ""
+  googleAnalytics = ""
+  customCSS = []
+  RSSLink = ""
+
+  twitterName = "faketryghost"
+  fbName = "fakeghost"
+  githubName = "eueung"
+
+  logo = ""
+  orgName = "EM"
+  orgWebsite = "https://www.telematika.org"
+  orgDescription = "Here is a description placeholder for your org"
+
+  author = "Admin"
+  authorAvatar = "img/ghost-icon.png"
+  authorLocation = "Vizag"
+  authorWebsite = ""
+  authorDescription = "Describe yourself.."
+
+  pageNotFoundTitle = "404 - Page not found"
+
+  #casper or caspertwo
+  singleViewStyle = "casper"
+
+[permalinks]
+  post = "/:slug/"
+
+[[menu.main]]
+  name = "Home"
+  url = "/"
+  weight = 200
+
+[[menu.main]]
+  name = "Blog"
+  url = "/post"
+  weight = 100
