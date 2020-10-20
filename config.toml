@@ -6,11 +6,12 @@ paginate        = 6
 #SectionPagesMenu = "main"
 
 [params]
-  title       = "Stardust Adventures"
-  subtitle    = "Exploring the unseen and unheard, in and around Vizag! Trekking | Camping | Stargazing"
+  title       = "Stardust"
+  subtitle    = "A D V E N T U R E S"
 
   cover       = ""
-  description = "Here is a description of your site."
+  description = "Exploring the unseen and unheard, in and around Vizag!"
+  subDescription="Trekking | Camping | Stargazing"
   metaDescription = ""
   googleAnalytics = ""
   customCSS = []
