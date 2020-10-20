@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}" />
+{{ partial "head" . }}
+
+<body class="">
+    <div class="">
+
+        {{if ne .Site.Params.singleViewStyle "casper"}}{{ partial "header" . }}
+{{else}}{{ partial "header-article" . }}{{end}}
+
+            <main id="site-main" class="" role="main">
+                {{ partial "article" . }}
+            </main>
+
+        {{ partial "footer" . }}
+    </div>
+</body>
+
+</html>
