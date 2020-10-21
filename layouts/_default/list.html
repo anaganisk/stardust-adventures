@@ -4,9 +4,8 @@
 
 <body class="">
     <div class="">
-
-        {{if ne .Site.Params.singleViewStyle "casper"}}{{ partial "header" . }}
-{{else}}{{ partial "header" . }}{{end}}
+        
+        {{ partial "header" . }}
 
             <main id="site-main" class="" role="main">
                 {{ partial "article-list" . }}
