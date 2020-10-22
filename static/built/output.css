@@ -297,8 +297,8 @@ html {
 img {
   border-style: solid;
 }
-
-/* h1,
+/* 
+h1,
 h2,
 h3,
 h4 {
@@ -435,10 +435,6 @@ pre {
   height: 3rem;
 }
 
-.h-20 {
-  height: 5rem;
-}
-
 .h-64 {
   height: 16rem;
 }
@@ -494,10 +490,6 @@ pre {
 
 .p-4 {
   padding: 1rem;
-}
-
-.p-10 {
-  padding: 2.5rem;
 }
 
 .py-3 {
@@ -671,6 +663,10 @@ pre {
 }
 
 @media (min-width: 1024px) {
+  .lg\:flex {
+    display: flex;
+  }
+
   .lg\:text-4xl {
     font-size: 2.25rem;
   }
@@ -697,4 +693,4 @@ pre {
   .lg\:pl-40 {
     padding-left: 10rem;
   }
-} 
+}
