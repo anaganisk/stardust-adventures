@@ -2,12 +2,12 @@
 <html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}" />
 {{ partial "head" . }}
 
-<body class="">
-    <div class="">
+<body>
+    <div>
         
         {{ partial "header" . }}
 
-            <main id="site-main" class="" role="main">
+            <main id="site-main" role="main">
                 {{ partial "article-list" . }}
             </main>
 {{.Content}}
