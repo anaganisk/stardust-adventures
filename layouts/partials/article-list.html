@@ -1,10 +1,10 @@
 {{ $paginator := .Paginate (where .Data.Pages.ByDate.Reverse "Type" "article") }}
 {{ range $paginator.Pages }}
-<article class="lg:mx-40 m-10 bg-gray-200 rounded-lg lg:flex article-list">
-    <a href="{{ .Permalink }}" class="w-full">
+<article class="lg:mx-40 m-10 bg-gray-200 rounded-lg md:flex article-list">
+    <a href="{{ .Permalink }}" class="md:w-2/6">
       <div class="bg-black w-full h-full" style="background-image: url({{.Params.image | absURL}})"></div>
     </a>
-    <div class="px-5 py-5">
+    <div class="px-5 py-5 md:w-4/6">
       <a href="{{ .Permalink }}">
           <header class="post-card-header">
               <h2 class="text-xl font-bold">{{.Title}}</h2>
