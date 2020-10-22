@@ -6,8 +6,9 @@
 @tailwind utilities;
 
 pre {
+    font-size: 0.8em;
     background: black;
     color: white;
     padding: 2%;
-    border-radius: 20px;
-} 
+    border-radius: 5px;
+  }
