@@ -14,7 +14,10 @@
     <meta name="description" content="{{ .Site.Params.metadescription | default .Site.Params.description }}" />
 
     {{ "<!-- Stylesheets -->" | safeHTML }}
-    <link rel="stylesheet" type="text/css" href="{{ "built/output.css" | absURL}}" /> 
+    <link rel="stylesheet" type="text/css" href="{{ "built/output.css" | absURL}}" />
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{{ "built/styles.css" | absURL}}" /> 
     
 </head>
 

@@ -6,9 +6,13 @@
     <div>
         
         {{ partial "header" . }}
-
-            <main id="site-main" role="main">
+        {{ partial "slides" . }}
+            <main id="site-main" role="main" class="relative z-10" style="margin-top:-5vh;">
+            <div class="px-2 md:px-20 flex flex-wrap">
+                {{ partial "itenary-list" . }}
+                
                 {{ partial "article-list" . }}
+            </div>
             </main>
 {{.Content}}
         {{ partial "footer" . }}

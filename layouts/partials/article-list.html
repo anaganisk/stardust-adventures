@@ -1,22 +1,30 @@
 {{ $paginator := .Paginate (where .Data.Pages.ByDate.Reverse "Type" "article") }}
 {{ range $paginator.Pages }}
-<article class="lg:mx-40 m-10 bg-gray-200 rounded-lg md:flex article-list">
-    <a href="{{ .Permalink }}" class="md:w-2/6">
-      <div class="bg-black w-full h-full" style="background-image: url({{.Params.image | absURL}})"></div>
-    </a>
-    <div class="px-5 py-5 md:w-4/6">
+<!-- lg:mx-40 m-10 mx-20 -->
+<div class="p-5 relative flex" style="flex: 1 0 100%;">
+<article class="relative h-full w-full" style="min-height: 350px;min-width: 300px;">
+    <div class="px-5 py-10 text-white h-full w-full rounded-lg absolute z-20">
       <a href="{{ .Permalink }}">
-          <header class="post-card-header">
-              <h2 class="text-xl font-bold">{{.Title}}</h2>
+          <header>
+              <h2 class="text-2xl font-bold">{{.Title}} orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor  </h2>
           </header>
-          <section>
-                <p>orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </section>
       </a>
       <footer class="flex pt-5">
+        {{if .Params.authorAvatar}}
           <img class="mr-3" src="{{ (.Params.authorAvatar | default .Site.Params.authorAvatar) | absURL}}" alt="Author" />
+          {{end}}
           <span class="font-bold"><a href="/">{{.Params.author | default .Site.Params.author}}</a></span>
       </footer>
     </div>
+    {{if .Params.image}}
+     <div class="w-full h-full rounded-lg absolute h-full w-full inset-0 bg-cover bg-center bg-no-repeat z-0" 
+     style="background-image: url({{.Params.image | absURL}});"></div>   
+    <div class="bg-black w-full h-full rounded-lg absolute h-full w-full inset-0 bg-cover bg-center bg-no-repeat z-10" 
+     style="opacity: 0.4;"></div>   
+     {{else}}
+     <div class="bg-gradient-to-r from-orange-400 to-red-500 w-full h-full rounded-lg absolute h-full w-full inset-0" 
+     style="z-index: -1;"></div>  
+     {{end}}
 </article>
+</div>
 {{ end }}

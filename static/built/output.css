@@ -578,6 +578,11 @@ img {
   width: 100%;
 }
 
+.asd:before {
+  background: black;
+  opacity: 0.5;
+}
+
 @-webkit-keyframes spin {
   to {
     transform: rotate(360deg);
