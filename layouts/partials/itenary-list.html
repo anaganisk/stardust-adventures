@@ -1,14 +1,12 @@
 {{ $paginator := .Paginate (where .Data.Pages.ByDate.Reverse "Type" "article") }}
 {{ range $paginator.Pages }}
-<!-- lg:mx-40 m-10 mx-20 -->
-<div class="p-5 relative flex" style="flex: 1 0 33.333%;">
-<article class="relative h-full w-full" style="min-height: 350px;min-width: 300px;">
+<div class="px-2 py-5 md:px-5  relative flex" style="flex: 1 0 33.333%;">
+<article class="relative h-full w-full" style="min-height: 350px;min-width: 280px;">
     <div class="px-5 py-10 text-white h-full w-full rounded-lg absolute z-20">
-      <a href="{{ .Permalink }}">
-          <header>
-              <h2 class="text-2xl font-bold">{{.Title}} orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor  </h2>
-          </header>
-      </a>
+      <a href="{{ .Permalink }}" class="absolute z-10 inset-0 w-full h-full"></a>
+      <header>
+        <h2 class="text-2xl font-bold">{{.Title}} orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor  </h2>
+    </header>
       <footer class="flex pt-5">
         {{if .Params.authorAvatar}}
           <img class="mr-3" src="{{ (.Params.authorAvatar | default .Site.Params.authorAvatar) | absURL}}" alt="Author" />

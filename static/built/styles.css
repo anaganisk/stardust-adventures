@@ -12,8 +12,12 @@ pre {
     padding: 2%;
     border-radius: 5px;
   }
+
+  .rounded-lg {
+    border-radius: 2.5rem;
+}
   
-  @media (min-width: 768px){
+  @media (min-width: 1024px){
   .md\:pl-1\/2 {
       padding-left:55%;
   }
