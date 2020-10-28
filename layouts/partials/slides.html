@@ -1,4 +1,3 @@
-<div class="relative" style="height:75vh; overflow: hidden;">
     {{ $paginator := .Paginate (where .Data.Pages "Type" "article") }}
     {{ range first 3 $paginator.Pages }}
      <div class="absolute inset-0 w-screen items-center justify-center slide h-full">
@@ -11,52 +10,3 @@
         <div class="lg:hidden w-full h-full bg-cover bg-center bg-no-repeat flex-grow flex-shrink-0 absolute lg:w-1/2"style="flex-basis:50%;background:black;opacity:0.4;z-index:1;"></div>
     </div>
     {{end}}
-    <div onclick="nextSlide()" class="absolute top-0 bottom-0 right-0 w-16 h-16 flex items-center justify-center text-black cursor-pointer" style="height: 75vh;">
-        <span class="bg-white px-5 py-3 rounded-full">&#x276F;</span>
-    </div>
-    <!-- <div onclick="previousSlide()" class="absolute bottom-0 right-0 bg-white w-16 h-16 mr-16 border-r border-gray-400 flex items-center justify-center text-black cursor-pointer">&#x276E;</div>  -->
-</div>
-<style>
-.preload * {
-  -webkit-transition: none !important;
-  -moz-transition: none !important;
-  -ms-transition: none !important;
-  -o-transition: none !important;
-}
-</style>
-<script>
-    let slides = document.querySelectorAll('.slide');
-        slides.forEach(element => {
-            element.classList.add('translate-x-full');
-        });
-        slides[0].classList.remove('translate-x-full');
-        slides[0].classList.add('translate-x-0');
-        slides.forEach(element => {
-            element.classList.add('transition-all', 'ease-in-out', 'duration-1000', 'transform');
-        });
-    window.onload=function(){
-        document.getElementsByClassName("preload")[0].classList.remove("preload");
-    }
-    function nextSlide(){
-    let activeSlide = document.querySelector('.slide.translate-x-0');
-    activeSlide.classList.remove('translate-x-0');
-    activeSlide.classList.add('-translate-x-full');
-    let nextSlide;
-    if(activeSlide.nextElementSibling.nextElementSibling==null) 
-    {
-        nextSlide = document.querySelectorAll('.slide.-translate-x-full');
-        nextSlide.forEach(element => {
-            element.classList.remove('-translate-x-full');
-            element.classList.add('translate-x-full');
-        });
-        nextSlide[0].classList.remove('translate-x-full');
-        nextSlide[0].classList.add('translate-x-0');
-    }
-    else{
-        nextSlide = activeSlide.nextElementSibling;
-        nextSlide.classList.remove('translate-x-full');
-        nextSlide.classList.add('translate-x-0');
-   }
-    
-}
-</script>
