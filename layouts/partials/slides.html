@@ -1,36 +1,43 @@
 <div class="relative" style="height:75vh; overflow: hidden;">
-    <div class="absolute inset-0 w-screen items-center justify-center transition-all ease-in-out duration-1000 transform translate-x-0 slide">
+    {{ $paginator := .Paginate (where .Data.Pages "Type" "article") }}
+    {{ $shuffled := shuffle $paginator.Pages }}
+    {{ range first 3 $shuffled }}
+     <div class="absolute inset-0 w-screen items-center justify-center slide h-full">
+        <a href="{{ .Permalink }}" class="absolute z-20 inset-0 w-full h-full"></a>
         <div class="w-full h-full lg:rounded-r-lg bg-cover bg-center bg-no-repeat flex-grow flex-shrink-0 absolute lg:w-1/2"style="flex-basis:50%;background-image: url(https://images.unsplash.com/photo-1524222717473-730000096953?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ&s=8b1938d…);"></div>
         <div class="font-bold text-gray-100 lg:text-gray-900 absolute py-10 md:py-20 lg:pr-40 md:pl-1/2 px-10 md:px-20 z-20" style="flex: 999 0 50%;">
-            <h1 class="text-4xl md:text-5xl lg:text-4xl ">{{.Params.author}}</h1>
-            <h2>by Author</h2>
+            <h1 class="text-4xl md:text-5xl lg:text-4xl">{{.Title}}</h1>
+            <h2>by {{.Params.author}}</h2>
         </div>
         <div class="lg:hidden w-full h-full bg-cover bg-center bg-no-repeat flex-grow flex-shrink-0 absolute lg:w-1/2"style="flex-basis:50%;background:black;opacity:0.4;z-index:1;"></div>
     </div>
-    <div class="absolute inset-0 w-screen items-center justify-center transition-all ease-in-out duration-1000 transform translate-x-full slide">
-        <div class="w-full h-full lg:rounded-r-lg bg-cover bg-center bg-no-repeat flex-grow flex-shrink-0 absolute lg:w-1/2"style="flex-basis:50%;background-image: url(https://images.unsplash.com/photo-1524222717473-730000096953?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ&s=8b1938d…);"></div>
-        <div class="font-bold text-gray-100 lg:text-gray-900 absolute py-10 md:py-20 lg:pr-40 md:pl-1/2 px-10 md:px-20 z-20" style="flex: 999 0 50%;">
-            <h1 class="text-4xl md:text-5xl lg:text-4xl ">{{.Params.author}}</h1>
-            <h2>by Author</h2>
-        </div>
-        <div class="lg:hidden w-full h-full bg-cover bg-center bg-no-repeat flex-grow flex-shrink-0 absolute lg:w-1/2"style="flex-basis:50%;background:black;opacity:0.4;z-index:1;"></div>
-    </div>
-    
-    <div class="absolute inset-0 w-screen items-center justify-center transition-all ease-in-out duration-1000 transform translate-x-full slide">
-        <div class="w-full h-full lg:rounded-r-lg bg-cover bg-center bg-no-repeat flex-grow flex-shrink-0 absolute lg:w-1/2"style="flex-basis:50%;background-image: url(https://images.unsplash.com/photo-1524222717473-730000096953?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ&s=8b1938d…);"></div>
-        <div class="font-bold text-gray-100 lg:text-gray-900 absolute py-10 md:py-20 lg:pr-40 md:pl-1/2 px-10 md:px-20 z-20" style="flex: 999 0 50%;">
-            <h1 class="text-4xl md:text-5xl lg:text-4xl ">{{.Params.author}}</h1>
-            <h2>by Author</h2>
-        </div>
-        <div class="lg:hidden w-full h-full bg-cover bg-center bg-no-repeat flex-grow flex-shrink-0 absolute lg:w-1/2"style="flex-basis:50%;background:black;opacity:0.4;z-index:1;"></div>
-    </div>
-    
+    {{end}}
     <div onclick="nextSlide()" class="absolute top-0 bottom-0 right-0 w-16 h-16 flex items-center justify-center text-black cursor-pointer" style="height: 75vh;">
         <span class="bg-white px-5 py-3 rounded-full">&#x276F;</span>
     </div>
     <!-- <div onclick="previousSlide()" class="absolute bottom-0 right-0 bg-white w-16 h-16 mr-16 border-r border-gray-400 flex items-center justify-center text-black cursor-pointer">&#x276E;</div>  -->
 </div>
+<style>
+.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}
+</style>
 <script>
+    let slides = document.querySelectorAll('.slide');
+        slides.forEach(element => {
+            element.classList.add('translate-x-full');
+        });
+        slides[0].classList.remove('translate-x-full');
+        slides[0].classList.add('translate-x-0');
+        slides.forEach(element => {
+            element.classList.add('transition-all', 'ease-in-out', 'duration-1000', 'transform');
+        });
+    window.onload=function(){
+        document.getElementsByClassName("preload")[0].classList.remove("preload");
+    }
     function nextSlide(){
     let activeSlide = document.querySelector('.slide.translate-x-0');
     activeSlide.classList.remove('translate-x-0');
@@ -54,110 +61,3 @@
     
 }
 </script>
-<!-- <style>
-    .snap-x {
-        scroll-snap-type: x mandatory;
-        
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-    }
-    .snap-start {
-      scroll-snap-align: start;
-    }
-    
-    </style>
-    
-    
-    <div class="flex flex-col items-center" style="z-index: -10;">
-    
-      <div class="w-full bg-white overflow-x-hidden flex snap-x" style="height: 80vh">
-        <div class="snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0" id="slide-1">
-            <div class="text-center h-full rounded-r-lg bg-cover bg-center bg-no-repeat"style="flex: 999 0 50%;    background-image: url(https://images.unsplash.com/photo-1524222717473-730000096953?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ&s=8b1938d…);"></div>
-                <div class="px-20 text-black" style="flex: 999 0 50%;">
-                    <h1 style="width: 440px;font-size: 45px;">I'm passionate about food, the tradition of it, cooking it, sharing it</h1>
-                </div>
-        </div>
-        <div class="translate-x-0 slide transform snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0" id="slide-2">
-            <div class="text-center h-full rounded-r-lg bg-cover bg-center bg-no-repeat"style="flex: 999 0 50%;    background-image: url(https://images.unsplash.com/photo-1520032484190-e5ef81d87978?ixlib=rb-1.2.1&q=75&fm=jpg&crop=entropy&cs=tinysrgb&w=830&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ);"></div>
-                <div class="px-20 text-black" style="flex: 999 0 50%;">
-                    <h1 style="width: 440px;font-size: 45px;">I'm passionate about food, the tradition of it, cooking it, sharing it</h1>
-                </div>
-        </div>
-        <div class="translate-x-full slide transform snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0" id="slide-3">
-            <div class="text-center h-full rounded-r-lg bg-cover bg-center bg-no-repeat"style="flex: 999 0 50%;    background-image: url(https://images.unsplash.com/photo-1512414584153-b9a3e3484950?ixlib=rb-0.3.5&q=75&fm=jpg&crop=entropy&cs=tinysrgb&w=830&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ&s=f61f1a56fd7ab2e18df900258feb8b4c);"></div>
-                <div class="px-20 text-black" style="flex: 999 0 50%;">
-                    <h1 style="width: 440px;font-size: 45px;">I'm passionate about food, the tradition of it, cooking it, sharing it</h1>
-                </div>
-        </div>
-    
-      </div>
-      <div class="bottom-0 right-0 bg-white w-16 h-16 flex items-center justify-center text-black" onclick="nextslide()">&#x276F;</div>
-     
-      <div class="flex mt-8">
-        <a  class="" href="#slide-1">1</a>
-        <a id="2" class="" href="#slide-2">2</a>
-        <a class="" href="#slide-3">3</a>
-        <a class="" href="#slide-4">4</a>
-        <a class="" href="#slide-5">5</a>
-        <a class="" href="#slide-6">6</a>
-      </div>
-    </div>
-    <script>
-        setTimeout(function(){
-        // console.log("a")
-        // let activeSlide = document.getElementById("2");//document.querySelector('.slide.translate-x-0');
-        // activeSlide.classList.remove('translate-x-0');
-        // activeSlide.classList.add('translate-x-full');
-        // console.log(activeSlide);
-
-        // let nextSlide = document.getElementById("1");//activeSlide.nextElementSibling;
-        // nextSlide.classList.remove('translate-x-full');
-        // nextSlide.classList.add('translate-x-0');
-        }, 3000);
-
-        function nextslide()
-        {
-            document.getElementById("slide-1").classList.add('hidden');
-        }
-    </script> -->
-
-        <!-- <div class="translate-x-0 slide transform snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-green-600" id="slide-2">
-          Slide 2
-        </div>
-        <div  class="translate-x-full transform slide snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-red-600" id="slide-3">
-          Slide 3
-        </div>
-        <div class="translate-x-0 slide snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-orange-600" id="slide-4">
-          Slide 4
-        </div>
-        <div class="translate-x-0 slide snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-purple-600" id="slide-5">
-          Slide 5
-        </div>
-        <div class="snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-black relative" id="slide-6">
-          <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=448&q=80" class="h-full w-full object-cover absolute inset-0 z-10 opacity-25">
-          <h1 class="z-20 text-center">Any kind of content here, images too!</h1>
-        </div> -->
-<!-- <style>
-.flickity-page-dots {
-    display: none;
-}
-@media (max-width: 768px) {
-    .flickity-prev-next-button {
-        display: none;
-    }
-}
-
-</style> -->
-<!-- 
-
-<div class="main-carousel w-full" data-flickity='{ "cellAlign": "left", "contain": true, "wrapAround": true  }'>
-    {{ $randomPosts := shuffle (where .Data.Pages "Type" "article") | first 3 }}
-    <div class="carousel-cell w-full" style="height:75vh">
-        <div class="w-full h-full lg:rounded-r-lg bg-cover bg-center bg-no-repeat flex-grow flex-shrink-0 absolute lg:w-1/2"style="flex-basis:50%;background-image: url(https://images.unsplash.com/photo-1524222717473-730000096953?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ&s=8b1938d…);"></div>
-        <div class="font-bold text-gray-100 lg:text-gray-900 absolute py-10 md:py-20 lg:pr-40 md:pl-1/2 px-10 md:px-20 z-20" style="flex: 999 0 50%;">
-            <h1 class="text-4xl md:text-5xl lg:text-4xl ">{{.Params.author}}</h1>
-            <h2>by Author</h2>
-        </div>
-        <div class="lg:hidden w-full h-full bg-cover bg-center bg-no-repeat flex-grow flex-shrink-0 absolute lg:w-1/2"style="flex-basis:50%;background:black;opacity:0.4;z-index:1;"></div>
-    </div>
-  </div> -->

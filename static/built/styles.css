@@ -13,11 +13,11 @@ pre {
     border-radius: 5px;
   }
 
-  .rounded-lg {
-    border-radius: 2.5rem;
+.rounded-lg {
+  border-radius: 2.5rem;
 }
   
-  @media (min-width: 1024px){
+@media (min-width: 1024px){
   .md\:pl-1\/2 {
       padding-left:55%;
   }
