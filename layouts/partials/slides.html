@@ -1,5 +1,7 @@
 <div class="relative" style="height:75vh; overflow: hidden;">
-    
+    {{ $paginator := .Paginate (where .Data.Pages "Type" "article") }}
+    {{ $shuffled := shuffle $paginator.Pages }}
+    {{ range first 3 $shuffled }}
      <div class="absolute inset-0 w-screen items-center justify-center slide h-full">
         <a href="{{ .Permalink }}" class="absolute z-20 inset-0 w-full h-full"></a>
         <div class="w-full h-full lg:rounded-r-lg bg-cover bg-center bg-no-repeat flex-grow flex-shrink-0 absolute lg:w-1/2"style="flex-basis:50%;background-image: url(https://images.unsplash.com/photo-1524222717473-730000096953?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ&s=8b1938d…);"></div>
@@ -9,7 +11,7 @@
         </div>
         <div class="lg:hidden w-full h-full bg-cover bg-center bg-no-repeat flex-grow flex-shrink-0 absolute lg:w-1/2"style="flex-basis:50%;background:black;opacity:0.4;z-index:1;"></div>
     </div>
-    
+    {{end}}
     <div onclick="nextSlide()" class="absolute top-0 bottom-0 right-0 w-16 h-16 flex items-center justify-center text-black cursor-pointer" style="height: 75vh;">
         <span class="bg-white px-5 py-3 rounded-full">&#x276F;</span>
     </div>
