@@ -6,7 +6,7 @@
 @tailwind utilities;
 
 pre {
-    font-size: 0.8em;
+    font-size: 0.6em;
     background: black;
     color: white;
     padding: 2%;
