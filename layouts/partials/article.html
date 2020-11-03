@@ -1,24 +1,26 @@
 <div class="relative" style="height: 75vh;">
-    <div class="w-full h-full lg:rounded-r-lg bg-cover bg-center bg-no-repeat flex-grow flex-shrink-0 absolute lg:w-1/2"style="flex-basis:50%;background-image: url(https://images.unsplash.com/photo-1524222717473-730000096953?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ&s=8b1938d…);"></div>
-    <div class="font-bold text-gray-100 lg:text-gray-900 absolute py-10 md:py-20 lg:pr-40 md:pl-1/2 px-10 md:px-20 z-20" style="flex: 999 0 50%;">
-        <h1 class="text-4xl md:text-5xl lg:text-4xl ">{{.Title}}</h1>
-        <h2>by Author</h2>
-    </div>
-    <div class="md:hidden bg-black w-full h-full absolute h-full w-full inset-0 bg-cover bg-center bg-no-repeat z-10" 
-     style="opacity: 0.4;"></div>
+     {{if .Params.image}}
+     <div class="w-full h-full lg:rounded-r-lg bg-cover bg-center bg-no-repeat flex-grow flex-shrink-0 absolute lg:w-1/2" 
+     style="background-image:url({{.Params.image | absURL}})"></div>
+     <div class="font-bold text-gray-100 lg:text-gray-900 absolute py-10 md:py-20 md:pr-40 md:pl-1/2 px-10 z-20">
+         <h1 class="text-4xl md:text-5xl lg:text-4xl">{{.Title}}</h1>
+         <h2 class="absolute bottom-0">by {{.Params.author}}</h2>
+     </div>
+     <div class="bg-black lg:hidden w-full h-full bg-cover bg-center bg-no-repeat flex-grow flex-shrink-0 absolute lg:w-1/2 z-10 bg-opacity-50"></div>
+     </div>
+     {{else}}
+     <div class="lg:rounded-r-lg bg-gradient-to-b from-orange-400 to-red-500 w-full h-full absolute inset-0 z-10"></div>
+     <div class="font-bold text-gray-100 absolute py-10 md:py-20 md:pr-40 px-10 md:px-40 z-20">
+         <h1 class="text-4xl md:text-5xl lg:text-4xl">{{.Title}}</h1>
+         <h2 class="absolute bottom-0">by {{.Params.author}}</h2>
+     </div>
+ </div>
+
+     {{end}}
+
    </div>
-<article class="mx-4 lg:mx-40 my-20 bg-gray-100 relative rounded-lg z-20" style="margin-top: -10vh;">
-    
+<article class="prose-lg mx-4 lg:mx-40 my-20 bg-white relative rounded-lg z-20" style="margin-top: -10vh;">
    <div class="px-4 pt-10 pb-20 lg:px-20 relative">
-       <!-- <h1 class="text-2xl md:text-4xl font-bold">{{.Title}}</h1> -->
-       <!-- <img class="w-full bg-black h-" width="80"src="hugo-logo.png" alt="Author"> -->
-     
-      
-        <!-- <div class="lg:hidden w-full h-full bg-cover bg-center bg-no-repeat flex-grow flex-shrink-0 absolute lg:w-1/2"style="flex-basis:50%;background:black;opacity:0.4;z-index:1;"></div>
-       <a href="{{ .Permalink }}">
-        <div class="h-64 bg-cover" style="background-image: url({{.Params.image | absURL}});    background-repeat: no-repeat;
-        background-size: 100% 170%;"></div>
-      </a> -->
        <section class="relative text-lg md:text-2xl">
         <p class="my-6">
             {{ .Content }}

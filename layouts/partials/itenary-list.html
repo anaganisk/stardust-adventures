@@ -1,28 +1,78 @@
 {{ $pages := .Pages }}
 {{ if .IsHome }}{{ $pages = .Site.RegularPages }}{{ end }}
 {{ range (where $pages "Section" "!=" "") }}
-<div class="px-2 py-5 md:px-5  relative flex" style="flex: 1 0 33.333%;">
-<article class="relative h-full w-full" style="min-height: 350px;min-width: 280px;">
-    <div class="px-5 py-10 text-white h-full w-full rounded-lg absolute z-20">
-      <a href="{{ .Permalink }}" class="absolute z-10 inset-0 w-full h-full"></a>
-      <header>
-        <h2 class="text-2xl font-bold">{{.Title}} orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor  </h2>
-    </header>
-      <footer class="flex pt-5">
+<div class="itenary px-2 py-5 md:px-5 relative flex hidden" style="flex: 1 0 33.333%;">
+<article class="relative h-full w-full duration-500 transform hover:-translate-y-4" style="min-height: 350px;min-width: 280px;">
+    <div class="p-10 text-white h-full w-full rounded-lg absolute z-20">
+      <a href="{{ .Permalink }}" class="absolute z-10 inset-0 w-full"></a>
+      <h2 class="text-2xl md:text-3xl font-bold">{{.Title}}</h2>
+      <div class="flex py-5 absolute bottom-0">
         {{if .Params.authorAvatar}}
           <img class="mr-3" src="{{ (.Params.authorAvatar | default .Site.Params.authorAvatar) | absURL}}" alt="Author" />
           {{end}}
-          <span class="font-bold"><a href="/">{{.Params.author | default .Site.Params.author}}</a></span>
-      </footer>
+          <span class="font-bold">
+            <a href="/">{{.Params.author | default .Site.Params.author}}</a>
+          </span>
+      </div>
     </div>
     {{if .Params.image}}
-     <div class="bg-black w-full h-full rounded-lg absolute h-full w-full inset-0 bg-cover bg-center bg-no-repeat z-0" 
+     <div class="w-full h-full rounded-lg absolute inset-0 bg-cover bg-center bg-no-repeat z-0" 
      style="background-image: url({{.Params.image | absURL}});z-index: -1;"></div>   
-     <div class="bg-black w-full h-full rounded-lg absolute h-full w-full inset-0 bg-cover bg-center bg-no-repeat z-10" 
-     style="opacity: 0.4;"></div>
+     <div class="bg-black bg-opacity-50 w-full h-full rounded-lg absolute inset-0 bg-cover bg-center bg-no-repeat z-10"></div>
      {{else}}
-     <div class="bg-gradient-to-r from-orange-400 to-red-500 w-full h-full rounded-lg absolute h-full w-full inset-0 z-10"></div>  
+     <div class="gradient bg-gradient-to-b rounded-lg absolute h-full w-full inset-0 z-10"></div>  
      {{end}}
 </article>
 </div>
 {{ end }}
+<div class="m-auto flex justify-center" style="flex: 1 0 100%;">
+  <div onclick="showMore('itenary-showMore','itenary')" id="itenary-showMore" class="transform rotate-90 top-0 bottom-0 right-0 w-16 h-16 flex items-center justify-center text-black cursor-pointer">
+    <span class="bg-white px-5 py-3 rounded-full">&#x276F;</span>
+</div>
+</div>
+<script>
+  var gradients=[ 
+              'from-orange-400 to-red-500',
+              'from-pink-400 to-red-500',
+              'from-pink-600 to-purple-800',
+              'from-blue-600 to-green-800'];
+  var currentGradient = 0;
+  var count = 6;
+  var itenaryElements;
+  window.onload = function(){
+    var gradientElement = document.getElementsByClassName("gradient");
+    for (let index = 0; index < gradientElement.length; index++) {
+      gradientElement[index].classList.add(gradients[currentGradient].split(' ')[0],gradients[currentGradient].split(' ')[1]);
+      if(currentGradient==gradients.length-1) currentGradient=0;
+      else currentGradient++;
+    }
+    itenaryElements = document.getElementsByClassName("itenary");
+    for(let i = 0;  i < 6;  i++) {
+      itenaryElements[i].classList.remove('hidden');
+    }
+    for(let i = 0;  i < 3;  i++) {
+      document.getElementsByClassName('article')[i].classList.remove('hidden')
+    }
+  }
+
+  function showMore(elementId, type){
+
+    var showMoreElement = document.getElementById(elementId);
+    var elements = document.getElementsByClassName(type);
+    if(showMoreElement.classList.contains('rotate-90')){
+      for(let i = 5;  i < elements.length; i++) {
+        elements[i].classList.remove('hidden');
+      }
+      showMoreElement.classList.remove('rotate-90')
+      showMoreElement.classList.add('-rotate-90')
+    }
+    else{
+      for(let i = 6;  i < elements.length; i++){
+        elements[i].classList.add('hidden');
+      }
+    
+    showMoreElement.classList.add('rotate-90')
+    showMoreElement.classList.remove('-rotate-90')
+    }
+  }
+</script>

@@ -5,21 +5,33 @@
 
 @tailwind utilities;
 
-pre {
-    font-size: 0.6em;
-    background: black;
-    color: white;
-    padding: 2%;
-    border-radius: 5px;
+@layer base{
+  @font-face {
+    font-family: 'Playlist Script';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Playlist Script'), url('../fonts/Playlist Script.woff') format('woff');
+    }
+    pre {
+      font-size: 0.6em;
+      background: black;
+      color: white;
+      padding: 2%;
+      border-radius: 5px;
   }
-
-.rounded-lg {
-  border-radius: 2.5rem;
+  
+  .rounded-lg {
+    border-radius: 2.5rem;
+  }
 }
   
-@media (min-width: 1024px){
-  .md\:pl-1\/2 {
-      padding-left:55%;
-  }
-}
+   @responsive{
+    @media (min-width: 1024px){
+      .md\:pl-1\/2 {
+          padding-left:55%;
+      }
+    } 
+   } 
+
+
   

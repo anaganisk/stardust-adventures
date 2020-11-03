@@ -4,14 +4,17 @@ module.exports = {
     // purgeLayersByDefault: true,
   },
   purge: {
-    // mode: 'all',
-    // enabled: true,
-    // preserveHtmlElements: false,
-    // content: ["./layouts/**/*.html"],
+    mode: 'all',
+    enabled: true,
+    preserveHtmlElements: false,
+    content: ["./layouts/**/*.html"],
   },
   theme: {
     extend: {},
   },
   variants: {},
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
+  options: {
+   // whitelist: ['h1', 'h2', 'h3', 'p', 'blockquote', 'strong' /* etc. */],
+  },
 };
