@@ -1,7 +1,7 @@
 <div class="relative" style="height:75vh; overflow: hidden;">
     {{ $shuffled := shuffle .Site.RegularPages }}
     {{ range first 3 (where $shuffled "Section" "!=" "") }}
-    {{ if qe "Type" "itineary"}}
+    {{ if eq "Type" "itineary"}}
      <div class="absolute inset-0 w-screen items-center justify-center slide h-full">
         <a href="{{ .Permalink }}" class="absolute z-40 inset-0 w-full h-full"></a>
         {{if .Params.image}}     
