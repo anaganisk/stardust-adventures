@@ -1,0 +1,37 @@
+{{ $pages2 := .Pages }}
+{{ if .IsHome }}
+{{ $articlePaginator := .Paginate (where .Site.RegularPages "Type" "article") }}
+{{ $pages2 = $articlePaginator.Pages }}
+{{ end }}
+{{ range $pages2 }}
+{{ if eq .Type "article"}}
+<div class="article px-2 py-5 md:px-5 relative flex hidden" style="flex: 1 0 100%;">
+<article class="relative h-full w-full duration-500 transform hover:-translate-y-4" style="min-height: 350px;min-width: 280px;">
+    <div class="p-10 text-white h-full w-full rounded-lg absolute z-20">
+      <a href="{{ .Permalink }}" class="absolute z-10 inset-0 w-full h-full"></a>
+      <header>
+        <h2 class="text-2xl md:text-3xl font-bold">{{.Title}}</h2>
+    </header>
+      <footer class="flex py-10 absolute bottom-0">
+        {{if .Params.authorAvatar}}
+          <img class="mr-3" src="{{ (.Params.authorAvatar | default .Site.Params.authorAvatar) | absURL}}" alt="Author" />
+          {{end}}
+          <span class="font-bold"><a href="/">{{.Params.author | default .Site.Params.author}}</a></span>
+      </footer>
+    </div>
+    {{if .Params.image}}
+     <div class="w-full h-full rounded-lg absolute inset-0 bg-cover bg-top bg-no-repeat z-0" 
+     style="background-image: url({{.Params.image | absURL}});z-index: -1;"></div>   
+     <div class="bg-black w-full h-full rounded-lg absolute inset-0 bg-cover z-10 bg-opacity-50"></div>
+     {{else}}
+     <div class="bg-gradient-to-b from-orange-400 to-red-500 w-full h-full rounded-lg absolute h-full w-full inset-0 z-10"></div>  
+     {{end}}
+</article>
+</div>
+{{ end }}
+{{ end }}
+<div class="m-auto flex justify-center" style="flex: 1 0 100%;">
+  <div onclick="showMore('article-showMore', 'article')" id="article-showMore" class="transform rotate-90 top-0 bottom-0 right-0 w-16 h-16 flex items-center justify-center text-black cursor-pointer">
+    <span class="bg-white px-5 py-3 rounded-full">&#x276F;</span>
+</div>
+</div>

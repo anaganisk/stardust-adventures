@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}" />
+{{ partial "head" . }}
+
+<body class="preload">
+    <div>       
+        {{ partial "header" . }}
+        {{ partial "slides" . }}
+            <main id="site-main" role="main" class="relative z-10">
+            <div class="px-2 md:px-20 flex flex-wrap">
+                <h2 class="w-full text-center text-5xl font-hairline">Our Itineraries</h2>
+                {{ partial "itenary-list" . }}
+                <hr class="w-full my-10">
+                <h2 class="w-full text-center text-5xl font-hairline">Our Team</h2>
+                {{ partial "team-list" . }}
+                <hr class="w-full my-10">
+                {{ partial "social" . }}
+                {{ partial "contact" . }}
+            </div>
+            
+          
+            </main>
+        {{ partial "footer" . }} 
+    </div>
+</body>
+</html>
