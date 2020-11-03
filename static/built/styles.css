@@ -33,5 +33,9 @@
     } 
    } 
 
-
+   @media (min-width: 1024px){
+    .md\:pl-1\/2 {
+        padding-left:55%;
+    }
+  } 
   
