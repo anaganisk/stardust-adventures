@@ -1,43 +1,34 @@
-{{ $pages := .Pages }}
-{{ if .IsHome }}
-{{ $paginator := .Paginate  (where .Site.RegularPages "Type" "itineary") }}
-{{ $pages = $paginator.Pages }}
-{{ end }}
-{{ range (where $pages "Section" "!=" "") }}
-{{ if eq .Type "itineary"}}
+{{ range (where .Site.RegularPages "Type" "itineary") }}
 <div class="hidden itenary px-2 py-5 md:px-5 relative flex" style="flex: 1 0 33.333%;">
-<article class="relative h-full w-full duration-500 transform hover:-translate-y-4" style="min-height: 450px;min-width: 280px;">
+  <article class="relative h-full w-full duration-500 transform hover:-translate-y-4"
+    style="min-height: 450px;min-width: 280px;">
     <div class="p-10 text-white h-full w-full rounded-lg absolute z-20">
-      <a href="{{ .Permalink }}" class="absolute z-10 inset-0 w-full"></a>
-      <h2 class="text-2xl md:text-3xl font-bold">{{.Title}}</h2>
-      <h3 class="text-xl md:text-2xl font-bold">subtitle</h3>
-      
-      <div class="py-5 absolute bottom-0">
-        <!-- {{if .Params.authorAvatar}}
-          <img class="mr-3" src="{{ (.Params.authorAvatar | default .Site.Params.authorAvatar) | absURL}}" alt="Author" />
-          {{end}}
-          <span class="font-bold">
-            <a href="/">{{.Params.author | default .Site.Params.author}}</a>
-          </span> -->
+      <div class="relative h-full w-full">
+        <a href="{{ .Permalink }}" class="absolute z-10 inset-0 w-full"></a>
+        <h2 class="text-2xl md:text-3xl font-bold">{{.Title}}</h2>
+        <h3 class="text-xl md:text-2xl font-bold">subtitle</h3>
+        <div class="py-5 absolute bottom-0">
           <h3 class="text-xl md:text-xl font-bold">Starts at</h3>
           <h3 class="text-xl md:text-xl">November 14, 2020 (Saturday) - 12:45 PM</h3>
           <h3 class="text-xl md:text-xl font-bold">Ends at</h3>
           <h3 class="text-xl md:text-xl">November 15, 2020 (Sunday) - 2:30 PM (at Paderu)</h3>
+        </div>
       </div>
     </div>
     {{if .Params.image}}
-     <div class="w-full h-full rounded-lg absolute inset-0 bg-cover bg-center bg-no-repeat z-0" 
-     style="background-image: url({{.Params.image | absURL}});z-index: -1;"></div>   
-     <div class="bg-black bg-opacity-50 w-full h-full rounded-lg absolute inset-0 bg-cover bg-center bg-no-repeat z-10"></div>
-     {{else}}
-     <div class="gradient bg-gradient-to-b rounded-lg absolute h-full w-full inset-0 z-10"></div>  
-     {{end}}
-</article>
+    <div class="w-full h-full rounded-lg absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+      style="background-image: url({{.Params.image | absURL}});z-index: -1;"></div>
+    <div class="bg-black bg-opacity-50 w-full h-full rounded-lg absolute inset-0 bg-cover bg-center bg-no-repeat z-10">
+    </div>
+    {{else}}
+    <div class="gradient bg-gradient-to-b rounded-lg absolute h-full w-full inset-0 z-10"></div>
+    {{end}}
+  </article>
 </div>
-{{ end }}
 {{ end }}
 <div class="m-auto flex justify-center" style="flex: 1 0 100%;">
-  <div onclick="showMore('itenary-showMore','itenary')" id="itenary-showMore" class="transform rotate-90 top-0 bottom-0 right-0 w-16 h-16 flex items-center justify-center text-black cursor-pointer">
+  <div onclick="showMore('itenary-showMore','itenary')" id="itenary-showMore"
+    class="transform rotate-90 top-0 bottom-0 right-0 w-16 h-16 flex items-center justify-center text-black cursor-pointer">
     <span class="bg-white px-5 py-3 rounded-full">&#x276F;</span>
-</div>
+  </div>
 </div>

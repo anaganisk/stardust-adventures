@@ -1,10 +1,6 @@
-{{ $pages2 := .Pages }}
-{{ if .IsHome }}
-{{ $articlePaginator := .Paginate (where .Site.RegularPages "Type" "article") }}
-{{ $pages2 = $articlePaginator.Pages }}
-{{ end }}
-{{ range $pages2 }}
-{{ if eq .Type "article"}}
+<div id="article-div" class="w-full">
+{{ $pages := .Pages }}
+{{ range $pages}}
 <div class="article px-2 py-5 md:px-5 relative flex hidden" style="flex: 1 0 100%;">
 <article class="relative h-full w-full duration-500 transform hover:-translate-y-4" style="min-height: 350px;min-width: 280px;">
     <div class="p-10 text-white h-full w-full rounded-lg absolute z-20">
@@ -29,9 +25,9 @@
 </article>
 </div>
 {{ end }}
-{{ end }}
 <div class="m-auto flex justify-center" style="flex: 1 0 100%;">
   <div onclick="showMore('article-showMore', 'article')" id="article-showMore" class="transform rotate-90 top-0 bottom-0 right-0 w-16 h-16 flex items-center justify-center text-black cursor-pointer">
     <span class="bg-white px-5 py-3 rounded-full">&#x276F;</span>
+</div>
 </div>
 </div>

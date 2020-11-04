@@ -19,37 +19,9 @@ pygmentsCodefences = true
     style = "monokai"
     tabWidth = 4
 
-[params]
-  title       = "Stardust"
-  subtitle    = "A D V E N T U R E S"
-
-  cover       = ""
-  description = "Exploring the unseen and unheard, in and around Vizag!"
-  subDescription="Trekking | Camping | Stargazing"
-  metaDescription = ""
-  googleAnalytics = ""
-  customCSS = []
-  RSSLink = ""
-
-
-  logo = ""
-  orgName = "EM"
-  orgWebsite = "https://www.telematika.org"
-  orgDescription = "Here is a description placeholder for your org"
-
-  author = "Admin"
-  authorAvatar = "img/ghost-icon.png"
-  authorLocation = "Vizag"
-  authorWebsite = ""
-  authorDescription = "Describe yourself.."
-
-  pageNotFoundTitle = "404 - Page not found"
-
-  #casper or caspertwo
-  singleViewStyle = "casper"
-
 [permalinks]
-  article = "/:slug/"
+  article = "article/:slug/"
+  itineary = "itineary/:slug/"
 
 [[menu.main]]
   name = "Home"

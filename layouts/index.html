@@ -11,23 +11,20 @@
                 <h2 class="w-full text-center text-5xl font-hairline">Our Itineraries</h2>
                 {{ partial "itenary-list" . }}
                 <hr class="w-full my-10">
+                <h2 class="w-full text-center text-5xl font-hairline">Checkout our Latest Posts</h2>
+                <div id="articles-section" class="w-full"></div>
+                <hr class="w-full my-10">
                 <h2 class="w-full text-center text-5xl font-hairline">Our Team</h2>
                 {{ partial "team-list" . }}
-                {{ partial "article-list" . }}
-
                 <hr class="w-full my-10">
                 {{ partial "social" . }}
                 {{ partial "contact" . }}
             </div>
-            
-          
             </main>
         {{ partial "footer" . }} 
     </div>
-<script>
-var sMarkDown = fetch('000.md').then(response => response.text())
-                                  .then(text => console.log(text))
-</script>
-    <div id="ext"></div>
+    <script>
+ 
+        </script>
 </body>
 </html>

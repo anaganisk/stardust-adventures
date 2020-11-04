@@ -1,0 +1,42 @@
+<div class="relative" style="height: 75vh;">
+    {{if .Params.image}}
+    <div class="w-full h-full lg:rounded-r-lg bg-cover bg-center bg-no-repeat flex-grow flex-shrink-0 absolute lg:w-1/2"
+        style="background-image:url({{.Params.image | absURL}})"></div>
+    <div class="font-bold text-gray-100 lg:text-gray-900 absolute py-10 md:py-20 md:pr-40 md:pl-1/2 px-10 z-20">
+        <h1 class="text-4xl md:text-5xl lg:text-4xl">{{.Title}}</h1>
+        <h2 class="absolute bottom-0">by {{.Params.author}}</h2>
+    </div>
+    <div
+        class="bg-black lg:hidden w-full h-full bg-cover bg-center bg-no-repeat flex-grow flex-shrink-0 absolute lg:w-1/2 z-10 bg-opacity-50">
+    </div>
+</div>
+{{else}}
+<div class="lg:rounded-r-lg bg-gradient-to-b from-orange-400 to-red-500 w-full h-full absolute inset-0 z-10"></div>
+<div class="font-bold text-gray-100 absolute py-10 md:py-20 md:pr-40 px-10 md:px-40 z-20">
+    <h1 class="text-4xl md:text-5xl lg:text-4xl">{{.Title}}</h1>
+    <h2 class="absolute bottom-0">by {{.Params.author}}</h2>
+</div>
+</div>
+
+{{end}}
+
+</div>
+<article class="prose-lg mx-4 lg:mx-40 my-20 bg-white relative rounded-lg z-20" style="margin-top: -10vh;">
+    <div class="px-4 pt-10 pb-20 lg:px-20 relative">
+        <section class="relative text-lg md:text-2xl">
+            <p class="my-6">
+                {{ .Content }}
+            </p>
+        </section>
+        <!-- <div class="pt-10 lg:pt-20 flex">
+            <div class="mr-4">
+                 <img src="hugo-logo.png" alt="Author">
+            </div>
+            <div>
+                <h1 class="text-2xl lg:text-4xl font-bold">Author Name</h1>
+                <h3>Description of the Author</h3>
+            </div>
+            <p></p>
+        </div> -->
+    </div>
+</article>
