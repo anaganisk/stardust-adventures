@@ -23,6 +23,13 @@
   .rounded-lg {
     border-radius: 2.5rem;
   }
+
+  blockquote{
+    border-left: #636363 solid 5px;
+    padding-left: 10px;
+    font-style: italic;
+    font-size: medium;
+  }
 }
   
    @responsive{

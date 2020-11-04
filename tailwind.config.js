@@ -15,6 +15,6 @@ module.exports = {
   variants: {},
   plugins: [require('@tailwindcss/typography')],
   options: {
-   // whitelist: ['h1', 'h2', 'h3', 'p', 'blockquote', 'strong' /* etc. */],
+  //whitelist: ['blockquote', 'strong' /* etc. */],
   },
 };
