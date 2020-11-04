@@ -24,5 +24,10 @@
             </main>
         {{ partial "footer" . }} 
     </div>
+<script>
+var sMarkDown = fetch('000.md').then(response => response.text())
+                                  .then(text => console.log(text))
+</script>
+    <div id="ext"></div>
 </body>
 </html>

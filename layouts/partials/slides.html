@@ -1,7 +1,7 @@
 <div class="relative" style="height:75vh; overflow: hidden;">
     {{ $shuffled := shuffle .Site.RegularPages }}
-    {{ range first 3 (where $shuffled "Section" "!=" "") }}
-    {{ if eq "Type" "itineary"}}
+    {{ range first 3 (where $shuffled "Section" "!=") }}
+    
      <div class="absolute inset-0 w-screen items-center justify-center slide h-full">
         <a href="{{ .Permalink }}" class="absolute z-40 inset-0 w-full h-full"></a>
         {{if .Params.image}}     
@@ -22,7 +22,7 @@
     </div>
 
     {{end}}    
-    {{end}}   
+       
     {{end}}
     <div class="absolute top-0 bottom-0 right-0 w-16 flex items-center justify-center text-black cursor-pointer" style="height: 75vh;">
         <span onclick="nextSlide()" class="bg-white px-5 py-3 rounded-full">&#x276F;</span>
@@ -37,38 +37,46 @@
 } */
 </style>
 <script>
-    let slides = document.querySelectorAll('.slide');
-        slides.forEach(element => {
-            element.classList.add('translate-x-full');
-        });
-        slides[0].classList.remove('translate-x-full');
-        slides[0].classList.add('translate-x-0');
-        slides.forEach(element => {
-            element.classList.add('transition-all', 'ease-in-out', 'duration-1000', 'transform');
-        });
-    window.onload=function(){
-        document.getElementsByClassName("preload")[0].classList.remove("preload");
-    }
-    function nextSlide(){
-    let activeSlide = document.querySelector('.slide.translate-x-0');
-    activeSlide.classList.remove('translate-x-0');
-    activeSlide.classList.add('-translate-x-full');
-    let nextSlide;
-    if(activeSlide.nextElementSibling.nextElementSibling==null) 
-    {
-        nextSlide = document.querySelectorAll('.slide.-translate-x-full');
-        nextSlide.forEach(element => {
-            element.classList.remove('-translate-x-full');
-            element.classList.add('translate-x-full');
-        });
-        nextSlide[0].classList.remove('translate-x-full');
-        nextSlide[0].classList.add('translate-x-0');
-    }
-    else{
-        nextSlide = activeSlide.nextElementSibling;
-        nextSlide.classList.remove('translate-x-full');
-        nextSlide.classList.add('translate-x-0');
-   }
+//     let slides = document.querySelectorAll('.slide');
+//         slides.forEach(element => {
+//             element.classList.add('translate-x-full');
+//         });
+//         slides[0].classList.remove('translate-x-full');
+//         slides[0].classList.add('translate-x-0');
+//         slides.forEach(element => {
+//             element.classList.add('transition-all', 'ease-in-out', 'duration-1000', 'transform');
+//         });
+//     window.onload=function(){
+//         document.getElementsByClassName("preload")[0].classList.remove("preload");
+//     }
+//     function nextSlide(){
+//     let activeSlide = document.querySelector('.slide.translate-x-0');
+//     activeSlide.classList.remove('translate-x-0');
+//     activeSlide.classList.add('-translate-x-full');
+//     let nextSlide;
+//     if(activeSlide.nextElementSibling.nextElementSibling==null) 
+//     {
+//         nextSlide = document.querySelectorAll('.slide.-translate-x-full');
+//         nextSlide.forEach(element => {
+//             element.classList.remove('-translate-x-full');
+//             element.classList.add('translate-x-full');
+//         });
+//         nextSlide[0].classList.remove('translate-x-full');
+//         nextSlide[0].classList.add('translate-x-0');
+//     }
+//     else{
+//         nextSlide = activeSlide.nextElementSibling;
+//         nextSlide.classList.remove('translate-x-full');
+//         nextSlide.classList.add('translate-x-0');
+//    }
     
-}
+// }
+
+// var readMarkdown = require('read-markdown')
+ 
+// readMarkdown('000.md')
+//     .then(function(data){
+//         console.log(data)
+//     })
+//     .catch(console.error)
 </script>
