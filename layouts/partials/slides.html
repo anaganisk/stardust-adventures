@@ -58,13 +58,11 @@
 <script>
     let slides = document.querySelectorAll('.slide');
     slides.forEach(element => {
-        element.classList.add('translate-x-full');
+        element.classList.add('translate-x-full','transition-all', 'ease-in-out', 'duration-1000', 'transform');
     });
     slides[0].classList.remove('translate-x-full');
     slides[0].classList.add('translate-x-0');
-    slides.forEach(element => {
-        element.classList.add('transition-all', 'ease-in-out', 'duration-1000', 'transform');
-    });
+    
     window.onload = function () {
         document.getElementsByClassName("preload")[0].classList.remove("preload");
     }
@@ -89,12 +87,4 @@
         }
 
     }
-
-// var readMarkdown = require('read-markdown')
-
-// readMarkdown('000.md')
-//     .then(function(data){
-//         console.log(data)
-//     })
-//     .catch(console.error)
 </script>
