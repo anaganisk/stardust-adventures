@@ -6,16 +6,13 @@ function includeHTML() {
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4) {
           if (this.status == 200) {
-            elmnt.innerHTML = this.responseText;
-            document.getElementById("articles-section").innerHTML = document.getElementById("article-div").innerHTML;
-            articleElements = document.getElementsByClassName('article');
-  
-            console.log(articleElements.length,articleElements)
-            if(articleElements.length>0)
-            for (let i = 0; i < 3; i++) {
-              console.log(articleElements[i])
-              articleElements[i].classList.remove("hidden");
-            }
+              elmnt.innerHTML = this.responseText;
+              document.getElementById("articles-section").innerHTML = document.getElementById("article-div").innerHTML;
+              articleElements = document.getElementsByClassName('article');
+              if(articleElements.length>0)
+              for (let i = 0; i < 3; i++) {
+                articleElements[i].classList.remove("hidden");
+              }
             }
           if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
         }
