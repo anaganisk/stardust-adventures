@@ -51,6 +51,11 @@ window.onload = function () {
   for (let i = 0; i < count; i++) {
     itenaryElements[i].classList.remove("hidden");
   }
+  articleElements = document.getElementsByClassName('article');
+  if(articleElements.length>0)
+  for (let i = 0; i < 6; i++) {
+    articleElements[i].classList.remove("hidden");
+  }
  
 };
 
